@@ -1,0 +1,25 @@
+
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - OPENWEATHER_API_KEY=${009feece2c08e3387ec6f4d9088e92be}
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+  volumes:
+      - weather-cache:/usr/src/app/cache
+
+volumes:
+  weather-cache:

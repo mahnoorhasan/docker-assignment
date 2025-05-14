@@ -1,0 +1,7 @@
+The idea for my application came from a desire to build something practical and easy to test—checking the weather is something everyone does daily. I wanted to create a lightweight service that could fetch live weather updates and also show how microservices and Docker can be applied in a real-world use case. I incorporated creativity by adding a caching mechanism that stores API responses locally using a Docker volume. This reduced repeated API calls and demonstrated Docker’s volume feature effectively.
+
+One of the main challenges I faced was running and linking the frontend and backend containers without Docker Compose. Manually managing network connections, container names, and port mappings became complex quickly. I addressed this by explicitly using Docker’s `--network` flag and creating a user-defined bridge network to ensure both services could communicate properly.
+
+Docker significantly simplified the development process. Docker networking made it possible to connect services reliably, and using volumes allowed me to persist data like weather cache across container restarts. The image build process also helped in keeping my app consistent across different environments.
+
+In a production setup, this application could be extended with authentication, more detailed forecasting (hourly or 7-day), and better error handling. Load balancing across backend instances and monitoring with Prometheus could also be added to improve performance and reliability.
